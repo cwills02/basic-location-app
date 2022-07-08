@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -12,16 +12,24 @@ function App() {
       });
   }, [])
 
-  return (
-    <div className="App">
-      <ul>
+  
+    return (
+      <div className="App">
+        <h1>Location Weather App</h1>
         {
           weatherData &&
-          <h1>{weatherData.region}</h1>
+        <ul>
+            <h2>{weatherData.region}</h2>
+            <h3>{weatherData.currentConditions.dayhour}</h3>
+            <h3>{weatherData.currentConditions.temp.f} degrees F</h3>
+            <h4>{weatherData.currentConditions.precip}</h4>
+            <h4>{weatherData.currentConditions.humidity}</h4>
+            <h4>{weatherData.currentConditions.wind.mile} per hour</h4>
+            <img src={weatherData.currentConditions.iconURL} alt='weather thumbnail' />
+        </ul>
         }
-      </ul>
-    </div>
-  );
+      </div>
+    );
 }
 
 export default App;
